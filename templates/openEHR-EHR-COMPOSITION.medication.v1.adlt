@@ -1,0 +1,105 @@
+template (adl_version=2.0.5; rm_release=1.0.2; generated)
+    openEHR-EHR-COMPOSITION.medication.v1.0.0
+
+specialize
+    openEHR-EHR-COMPOSITION.summary.v1.0.0
+
+language
+    original_language = <[ISO_639-1::en]>
+    translations = <
+        ["sl"] = <
+            author = <
+                ["name"] = <"?">
+            >
+            language = <[ISO_639-1::sl]>
+        >
+    >
+    
+description
+    copyright = <"">
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            misuse = <"">
+            purpose = <"To record a persistent record of some aspect of the health status of the patient e.g Vaccination status, Allergies
+">
+            use = <"">
+        >
+        ["sl"] = <
+            language = <[ISO_639-1::sl]>
+            misuse = <"*(en)">
+            purpose = <"*To record a persistent record of some aspect of the health status of the patient e.g Vaccination status, Allergies
+(en)">
+            use = <"*(en)">
+        >
+    >
+    lifecycle_state = <"unmanaged">
+    original_author = <
+        ["name"] = <"Dr Ian McNicoll">
+        ["organisation"] = <"Ocean Informatics, United Kingdom">
+        ["email"] = <"ian.mcnicoll@oceaninformatics.com">
+        ["date"] = <"09/03/2011">
+    >
+
+definition
+    COMPOSITION[id1.1] matches {    -- Patient summary
+        /category[id2]/defining_code matches {[at1]}
+        content matches {
+            use_archetype SECTION[id0.2, openEHR-EHR-SECTION.ovl-medication-medication-001.v1.0.0]
+        }
+    }
+
+terminology
+    term_definitions = <
+        ["en"] = <
+            ["id1.1"] = <
+                text = <"Patient summary">
+                description = <"A snapshot summary of the vaccination record.">
+            >
+        >
+        ["sl"] = <
+            ["id1.1"] = <
+                text = <"*Patient summary(en)">
+                description = <"*A snapshot summary of the vaccination record.(en)">
+            >
+        >
+    >
+
+
+---------------------------------------------------------------------------------
+template_overlay
+    openEHR-EHR-SECTION.ovl-medication-medication-001.v1.0.0
+
+specialize
+    openEHR-EHR-SECTION.medication.v1.0.0
+
+definition
+    SECTION[id1.1] matches {    -- Medication
+        items matches {
+            allow_archetype INSTRUCTION[id2] matches { 
+                include
+                    archetype_id/value matches {/openEHR-EHR-INSTRUCTION\.medication(-a-zA-Z0-9_]+)*\.v1/}
+            }
+            allow_archetype ACTION[id3] matches { 
+                include
+                    archetype_id/value matches {/openEHR-EHR-ACTION\.medication(-a-zA-Z0-9_]+)*\.v1/}
+            }
+        }
+    }
+
+terminology
+    term_definitions = <
+        ["en"] = <
+            ["id1.1"] = <
+                text = <"Medication">
+                description = <"A section containing medication orders and their associated actions.">
+            >
+        >
+        ["sl"] = <
+            ["id1.1"] = <
+                text = <"*Medication(en)">
+                description = <"*A section containing medication orders and their associated actions.(en)">
+            >
+        >
+    >
+
