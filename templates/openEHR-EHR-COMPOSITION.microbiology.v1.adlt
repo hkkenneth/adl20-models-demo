@@ -1,0 +1,103 @@
+template (adl_version=2.0.5; rm_release=1.0.2; generated)
+    openEHR-EHR-COMPOSITION.microbiology.v1.0.0
+
+specialize
+    openEHR-EHR-COMPOSITION.report.v1.0.0
+
+language
+    original_language = <[ISO_639-1::en]>
+    translations = <
+        ["sl"] = <
+            author = <
+                ["name"] = <"?">
+            >
+            language = <[ISO_639-1::sl]>
+        >
+    >
+    
+description
+    copyright = <"copyright (c) 2010 openEHR Foundation">
+    details = <
+        ["sl"] = <
+            keywords = <"*report(en)">
+            language = <[ISO_639-1::sl]>
+            misuse = <"*(en)">
+            purpose = <"*Generic container archetype to carry information that needs to be shared with others.(en)">
+            use = <"*Use as a generic archetype to carry information that needs to be shared with others.  Common examples are: documenting a response to a request for information; the outcome of testing; activities that have been performed; or events that have occurred.
+The Context component contains an optional unnamed slot that can be used to:
+- add optional content during templating to support a use-case specific requirements;
+- add EHR model demographic archetypes representing participating parties. While this may not be desired at implementation, this can be useful to demonstrate how demographics may be represented in an implementation ie as a support to clinical content requirements gathering or template review.
+The Sections component has been deliberately left unconstrained to maximise re-use of this archetype. (en)">
+        >
+        ["en"] = <
+            keywords = <"report">
+            language = <[ISO_639-1::en]>
+            misuse = <"">
+            purpose = <"Generic container archetype to carry information that needs to be shared with others.">
+            use = <"Use as a generic archetype to carry information that needs to be shared with others.  Common examples are: documenting a response to a request for information; the outcome of testing; activities that have been performed; or events that have occurred.
+The Context component contains an optional unnamed slot that can be used to:
+- add optional content during templating to support a use-case specific requirements;
+- add EHR model demographic archetypes representing participating parties. While this may not be desired at implementation, this can be useful to demonstrate how demographics may be represented in an implementation ie as a support to clinical content requirements gathering or template review.
+The Sections component has been deliberately left unconstrained to maximise re-use of this archetype. ">
+        >
+    >
+    lifecycle_state = <"unmanaged">
+    original_author = <
+        ["name"] = <"Heather Leslie">
+        ["email"] = <"heather.leslie@oceaninformatics.com">
+        ["organisation"] = <"Ocean Informatics">
+        ["date"] = <"14/04/2010">
+    >
+    other_contributors = <"Heath Frankel, Ocean Informatics, Australia", "Sam Heard, Ocean Informatics, Australia", "Sistine Barretto-Daniels, Ocean Informatics, Australia", "Hugh Leslie, Ocean Informatics, Australia", "Ian McNicoll, Ocean Informatics, Australia">
+
+definition
+    COMPOSITION[id1.1] matches {    -- Report
+        /category[id7]/defining_code matches {[at1]}
+        /context[id8]/other_context[id2]/items matches {
+            allow_archetype CLUSTER[id11] matches { 
+                include
+                    archetype_id/value matches {/.*/}
+            }
+        }
+        content matches {
+            use_archetype OBSERVATION[id0.2, openEHR-EHR-OBSERVATION.ovl-microbiology-microbiology-001.v1.0.0]
+        }
+    }
+
+terminology
+    term_definitions = <
+        ["en"] = <
+            ["id1.1"] = <
+                text = <"Report">
+                description = <"Document to communicate information to others, commonly in response to a request from another party.">
+            >
+        >
+        ["sl"] = <
+            ["id1.1"] = <
+                text = <"Poročilo">
+                description = <"*Document to communicate information to others, commonly in response to a request from another party.(en)">
+            >
+        >
+    >
+
+
+---------------------------------------------------------------------------------
+template_overlay
+    openEHR-EHR-OBSERVATION.ovl-microbiology-microbiology-001.v1.0.0
+
+specialize
+    openEHR-EHR-OBSERVATION.microbiology.v1.0.0
+
+definition
+    OBSERVATION[id1.1]     -- microbiology
+
+terminology
+    term_definitions = <
+        ["en"] = <
+            ["id1.1"] = <
+                text = <"microbiology">
+                description = <"microbiology">
+            >
+        >
+    >
+
