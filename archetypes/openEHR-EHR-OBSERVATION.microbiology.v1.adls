@@ -15,30 +15,7 @@ description
     lifecycle_state = <"unmanaged">
 
 definition
-    OBSERVATION[id1] matches {    -- microbiology
-        data matches {
-            HISTORY[id2] matches {
-                events matches {
-                    EVENT[id3] matches {    -- Any event
-                        data matches {
-                            ITEM_TREE[id4] matches {
-                                items matches {
-                                    ITEM[id6]     -- Test name
-                                    ITEM[id7]     -- Test status
-                                    CLUSTER[id8] matches {    -- Specimen detail
-                                        items
-                                    }
-                                }
-                            }
-                        }
-                        state matches {
-                            ITEM_TREE[id5] 
-                        }
-                    }
-                }
-            }
-        }
-    }
+    OBSERVATION[id1]     -- microbiology
 
 terminology
     term_definitions = <
@@ -59,10 +36,56 @@ terminology
                 text = <"Test status">
                 description = <"Test status">
             >
-            ["id8"] = <
+            ["id10"] = <
+                text = <"Fluid Details">
+                description = <"Fluid Details">
+            >
+            ["id11"] = <
+                text = <"Microbial findings">
+                description = <"Microbial findings">
+            >
+            ["id13"] = <
+                text = <"organism">
+                description = <"organism">
+            >
+            ["id15"] = <
                 text = <"Specimen detail">
                 description = <"Specimen detail">
             >
+            ["id16"] = <
+                text = <"Therapeutic sensitivities">
+                description = <"Therapeutic sensitivities">
+            >
+            ["id17"] = <
+                text = <"Agent">
+                description = <"Agent">
+            >
+            ["id19"] = <
+                text = <"Sensitivity">
+                description = <"Sensitivity">
+            >
+            ["at1"] = <
+                text = <"Sensitive">
+                description = <"Sensitive">
+            >
+            ["at2"] = <
+                text = <"Resistant">
+                description = <"Resistant">
+            >
+            ["at3"] = <
+                text = <"Borderline resistant">
+                description = <"Borderline resistant">
+            >
+            ["ac1"] = <
+                text = <"Sensitivity">
+                description = <"Sensitivity">
+            >
+        >
+    >
+    value_sets = <
+        ["ac1"] = <
+            id = <"ac1">
+            members = <"at1", "at2", "at3">
         >
     >
 
